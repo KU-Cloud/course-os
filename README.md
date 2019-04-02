@@ -40,9 +40,8 @@ $ cd course-os
 
 You can run examples using `./run.sh XXX`.
 
-> Give execute permission to `run.sh` by `chmod +x ./run.sh` if you needed.
-
 ```sh
+# Give execute permission to `run.sh` by `chmod +x ./run.sh` if you needed.
 $ chmod +x ./run.sh
 $ ./run.sh 
 build...010/main.c: In function ‘main’:
@@ -54,7 +53,7 @@ build...010/main.c: In function ‘main’:
          ^
 Failed to compile 010/main.c. Aborting
 ```
-In this example, you can see one or more errors caused by unexpected expression, `<?X/>`. This is blank. You should replace it wit the proper code.
+In this example, you can see one or more errors caused by unexpected expression, `<?X/>`. This is blank. You should replace it with the proper code.
 
 Some examples are assigned objectives that need to be achieved. In those examples, there may be a portion of the code missing, so be sure to write the missing code in the proper location. e.g. `120`.
 
