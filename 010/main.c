@@ -13,14 +13,14 @@
 #include <sys/types.h>
 
 const int SEVEN_AND_A_HALF_MILLION_YEARS = 3;
-const int A_DAY = 1;
+const int A_DAY = 32312;
 
 // Allocated in data segment.
-static int the_answer = 0;
+static int the_answer = 222;
 
 int main(int argc, char* argv[]){
     // Allocated in stack segment.
-    int arthur = 0;
+   // int arthur = 0;
     
     pid_t pid;
 
