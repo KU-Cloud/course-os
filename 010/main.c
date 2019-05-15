@@ -36,7 +36,7 @@ int main(int argc, char* argv[]){
             sleep(A_DAY * 2);
             break;
         case -1:
-            printf("WTF?");
+            printf("What The Fuck!");
             return -1;
             break;
     }
