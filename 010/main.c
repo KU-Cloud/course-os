@@ -16,7 +16,7 @@ const int SEVEN_AND_A_HALF_MILLION_YEARS = 3;
 const int A_DAY = 1;
 
 // Allocated in data segment.
-static int the_answer = 0;
+static int answer = 0;
 
 int main(int argc, char* argv[]){
     // Allocated in stack segment.
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
     switch(pid = fork()){
         default:
             // HINT: The parent process should fall into this scope.
-            the_answer = 42;
+            answer = 42;
             arthur = 6 * 9;
             sleep(SEVEN_AND_A_HALF_MILLION_YEARS);
             break;
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
     }
 
     printf("My pid is %ld (%s)\n", (long)getpid(), pid == 0 ? "child" : "parent");
-    printf("The answer to the ultimate question of life the universe and everything is %d.\n", the_answer);
+    printf("The answer to the ultimate question of life the universe and everything is %d.\n", answer);
     printf("But Arthur replied that it was %d.\n\n", arthur);
 
     return 0;
