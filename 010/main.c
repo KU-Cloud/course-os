@@ -5,7 +5,7 @@
  * - How to use fork().
  * - How to distinguish parent and child process.
  * - What happens to variables that reside in various scopes.
- * 
+ * - asdfasdsf
  */
 
 #include <stdio.h>
@@ -14,6 +14,7 @@
 
 const int SEVEN_AND_A_HALF_MILLION_YEARS = 3;
 const int A_DAY = 1;
+const int qwer = 0;
 
 // Allocated in data segment.
 static int the_answer = 0;
