@@ -15,7 +15,6 @@
 const int SEVEN_AND_A_HALF_MILLION_YEARS = 3;
 const int A_DAY = 1;
 
-// Allocated in data segment.
 static int the_answer = 0;
 
 int main(int argc, char* argv[]){
