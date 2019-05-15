@@ -23,6 +23,7 @@ int main(int argc, char* argv[]){
     int arthur = 0;
     
     pid_t pid;
+    int i;
 
     switch(pid = fork()){
         default:
