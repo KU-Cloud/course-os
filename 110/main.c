@@ -4,14 +4,14 @@
  * By walking through this example you’ll learn:
  * - How to use thread_detach().
  * - How to wait detached thread using shared variable.
- * 
+ *
  */
 
-#include <stdio.h>
-#include <stdatomic.h>
-#include <unistd.h>
 #include <pthread.h>
+#include <stdatomic.h>
+#include <stdio.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #define NUM_WORKERS 3
 #define NUM_PERSONAL_TASK 3
@@ -19,71 +19,62 @@
 
 static _Atomic int cnt_task = NUM_TOTAL_TASK;
 
-void do_job(char* actor);
-void go_home(char* actor);
-void* worker(void* arg);
-void* boss(void* arg);
+void do_job(char *actor);
+void go_home(char *actor);
+void *worker(void *arg);
+void *boss(void *arg);
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
     pthread_t tid;
     int status;
 
     status = pthread_create(&tid, NULL, boss, NULL);
 
-    if (status != 0)
-    {
+    if (status != 0) {
         printf("WTF?");
         return -1;
     }
 
     pthread_join(tid, NULL);
 
-    // OBJECT: The main thread should not be exited until all `worker`s have finished.
-    // 
-    // HINT: The `main` thread cannot wait for `worker` threads detached by `boos`.
-    // HINT: Is there any information about remaining tasks that can be
+    // OBJECT: The main thread should not be exited until all `worker`s have
+    // finished.
+    //
+    // HINT: The `main` thread cannot wait for `worker` threads detached by
+    // `boos`. HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
-    <?1/>
+    while (cnt_task > 0)
+        ;
 
     return 0;
 }
 
-
-
-void do_job(char* actor){
+void do_job(char *actor) {
     cnt_task--;
     printf("[%s] working...\n", actor);
 }
 
-void go_home(char* actor){
-    printf("[%s] So long suckers!\n", actor);
-}
+void go_home(char *actor) { printf("[%s] So long suckers!\n", actor); }
 
-void* worker(void* arg)
-{
+void *worker(void *arg) {
     char act[20];
     sprintf(act, "%s%d", "worker", (int)arg);
 
-    for(int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++) {
         sleep(1);
         do_job(act);
     }
-    
+
     pthread_exit(NULL);
 }
 
-void* boss(void* arg)
-{
+void *boss(void *arg) {
     pthread_t tid;
     int status;
-    for(int i = 0; i < NUM_WORKERS; i++)
-    {
+    for (int i = 0; i < NUM_WORKERS; i++) {
         status = pthread_create(&tid, NULL, worker, i);
 
-        if (status != 0)
-        {
+        if (status != 0) {
             printf("WTF?");
             return -1;
         }

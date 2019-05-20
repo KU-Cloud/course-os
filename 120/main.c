@@ -3,14 +3,14 @@
  *
  * By walking through this example you’ll learn:
  * - How to wait detached thread using mutex.
- * 
+ *
  */
 
-#include <stdio.h>
-#include <stdatomic.h>
-#include <unistd.h>
 #include <pthread.h>
+#include <stdatomic.h>
+#include <stdio.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #define NUM_WORKERS 3
 #define NUM_PERSONAL_TASK 3
@@ -19,13 +19,14 @@
 static _Atomic int cnt_task = NUM_TOTAL_TASK;
 pthread_mutex_t task_done;
 
-void do_job(char* actor);
-void go_home(char* actor);
-void* worker(void* arg);
-void* boss(void* arg);
+void do_job(char *actor);
+void go_home(char *actor);
+void *worker(void *arg);
+void *boss(void *arg);
 
 //
-// OBJECT: The main thread should not be exited until all `worker`s have finished.
+// OBJECT: The main thread should not be exited until all `worker`s have
+// finished.
 //
 // HINT: The thread `boss` locks `task_done`.
 // HINT: How to make `main` thread wait for all `worker`s.
@@ -36,8 +37,7 @@ void* boss(void* arg);
 //
 // PS. Use mutex not `sleep` related function.
 //
-int main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
     pthread_t tid;
     int status;
 
@@ -45,57 +45,55 @@ int main(int argc, char* argv[])
 
     status = pthread_create(&tid, NULL, boss, NULL);
 
-    if (status != 0)
-    {
+    if (status != 0) {
         printf("WTF?");
         return -1;
     }
 
     pthread_join(tid, NULL);
 
+    while (1) {
+        pthread_mutex_lock(&task_done);
+        if (cnt_task <= 0) {
+            break;
+        }
+        pthread_mutex_unlock(&task_done);
+    }
     printf("Remaining task(s): %d\n", cnt_task);
 
     return 0;
 }
 
-
-
-void do_job(char* actor){
+void do_job(char *actor) {
     printf("[%s] working...\n", actor);
+    cnt_task--;
 }
 
-void go_home(char* actor){
-    printf("[%s] So long suckers!\n", actor);
-}
+void go_home(char *actor) { printf("[%s] So long suckers!\n", actor); }
 
-void* worker(void* arg)
-{
+void *worker(void *arg) {
     char act[20];
     sprintf(act, "%s%d", "worker", (int)arg);
 
-    for(int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++) {
         sleep(1);
         do_job(act);
     }
-    
+
     sleep(0);
     pthread_exit(NULL);
 }
 
-void* boss(void* arg)
-{
+void *boss(void *arg) {
     pthread_t tid;
     int status;
 
     pthread_mutex_lock(&task_done);
 
-    for(int i = 0; i < NUM_WORKERS; i++) 
-    {
+    for (int i = 0; i < NUM_WORKERS; i++) {
         status = pthread_create(&tid, NULL, worker, i);
 
-        if (status != 0)
-        {
+        if (status != 0) {
             printf("WTF?");
             return -1;
         }
@@ -104,5 +102,6 @@ void* boss(void* arg)
     }
 
     go_home("like a boss");
+    pthread_mutex_unlock(&task_done);
     pthread_exit(NULL);
 }

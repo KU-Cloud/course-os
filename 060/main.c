@@ -5,22 +5,20 @@
  * - How to use pthread_create().
  * - How to use pthread_exit().
  * - How to use pthread_join().
- * 
+ *
  */
 
-#include <stdio.h>
-#include <unistd.h>
 #include <pthread.h>
+#include <stdio.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
-void* ninja(void* arg){
+void *ninja(void *arg) {
     printf("Who’s there?");
     fflush(stdout);
 
     pthread_exit("ninja");
 }
-
-
 
 //
 // Expected output:
@@ -30,22 +28,22 @@ void* ninja(void* arg){
 // Knuc...kles.
 //
 
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]) {
     pthread_t tid;
-    char* from = "";
-    
+    char *from = "";
+
     printf("Knock knock.\n");
 
     // HINT: The thread that runs `ninja` should be created.
-    int status = pthread_<?1/>(<?2/>);
+    int status = pthread_create(&tid, NULL, ninja, NULL);
 
-    if(status != 0){
+    if (status != 0) {
         printf("WTF?");
         return -1;
     }
 
     // HINT: The main thread should not be exited until `ninja` has finished.
-    pthread_<?3/>(<?4/>);
+    pthread_join(tid, &from);
 
     // HINT: The variable `from` should not be empty.
     printf(" - from %s\n", from);
