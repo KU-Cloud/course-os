@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
     for(int i = 0; i < NUM_THREADS; i++){
-        pthread_join(tids[i], &progress);
+        pthread_join(tids[i], progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
