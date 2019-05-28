@@ -28,7 +28,7 @@ void* worker(void* arg){
         progress = cnt++;
     }
 
-    pthread_exit(progress);
+    pthread_exit(&progress);
 }
 
 int main(int argc, char* argv[]){
