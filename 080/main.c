@@ -21,7 +21,7 @@ int stick_this_thread_to_core(int core_id);
 static int cnt = 0;
 
 void* worker(void* arg){
-    stick_this_thread_to_core((intptr_t)arg);
+    stick_this_thread_to_core(arg);
     int progress;
     
     for(int i = 0; i < NUM_TASKS; i++){
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
     for(int i = 0; i < NUM_THREADS; i++){
-        pthread_join(tids[i], progress);
+        pthread_join(tids[i], (void *)(intptr_t)progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
