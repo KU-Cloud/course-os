@@ -21,7 +21,7 @@ int stick_this_thread_to_core(int core_id);
 static int cnt = 0;
 
 void* worker(void* arg){
-    stick_this_thread_to_core(arg);
+    stick_this_thread_to_core((intptr_t)arg);
     int progress;
     
     for(int i = 0; i < NUM_TASKS; i++){
