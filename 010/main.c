@@ -22,9 +22,9 @@ int main(int argc, char* argv[]){
     // Allocated in stack segment.
     int arthur = 0;
     
-    pid_t pid = fork();
+    pid_t pid;
 
-    switch (pid){
+    switch(pid = fork()){
         default:
             // HINT: The parent process should fall into this scope.
             the_answer = 42;
