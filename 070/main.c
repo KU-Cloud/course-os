@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
         // HINT: The address of variable `main_static` should be passed 
         //       when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_create(&tids[i],NULL,&worker,(void*)(intptr_t)main_static);
+        status = pthread_create(&tids[i],NULL,worker,(void*)(intptr_t)main_static);
 
         if(status != 0){
             printf("WTF?");
