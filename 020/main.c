@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
     
     pid = fork();
 
-    if(pid!=0){
+    if(pid>0){
         // HINT: The parent process should fall into this scope.
         val++;
     } else if(pid==0) {
