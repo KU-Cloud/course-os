@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
     printf("%s executing `ls -l`.\n", "Before");
 
     // HINT: The /bin/ls -l should be executed.
-    execl(<?1/>);
+    execl("/bin/ls","ls","-l",(char*)0);
 
     printf("%s executing `ls -l`.\n", "After");
 
