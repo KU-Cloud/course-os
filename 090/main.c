@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
         // HINT: The thread that runs `worker` should be created.
         // HINT: The address of variable `i` should be passed when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_create( &tids[i], NULL, worker, NULL );
+        status = pthread_create( &tids[i], NULL, worker, &i );
 
         if(status != 0){
             printf("WTF?");
