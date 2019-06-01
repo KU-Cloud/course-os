@@ -4,15 +4,13 @@
  * By walking through this example you’ll learn:
  * - In the parent process, wait for the child process to complete its work.
  * - How to use wait().
- * 
+ *
  */
 
 #include <stdio.h>
-#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
-
+#include <unistd.h>
 
 //
 // Expected output:
@@ -22,29 +20,31 @@
 // Duh! Ra! Goon!
 //
 
-int main(int argc, char* argv[]){
-    pid_t pid;
-    int status;
+int main(int argc, char* argv[]) {
+  pid_t pid;
+  int status;
 
-    printf("It breaks my heart to see my fellow zealots suffer on the battlefield.\n");
-    printf("But what if we dragoons went to their rescue?\n");
+  printf(
+      "It breaks my heart to see my fellow zealots suffer on the "
+      "battlefield.\n");
+  printf("But what if we dragoons went to their rescue?\n");
 
-    printf("Duh! ");
-    fflush(stdout);
+  printf("Duh! ");
+  fflush(stdout);
 
-    pid = fork();
+  pid = fork();
 
-    if(<?1/>){
-        // HINT: The parent process should fall into this scope.
-        wait(<?3/>);
+  if (pid > 0) {
+    // HINT: The parent process should fall into this scope.
+        wait(&status);
         printf("Goon!\n");
-    } else if(<?2/>){
-        // HINT: The child process should fall into this scope.
-        printf("Ra! ");
-    } else {
-        printf("WTF?");
-        return -1;
-    }
+  } else if (pid == 0) {
+    // HINT: The child process should fall into this scope.
+    printf("Ra! ");
+  } else {
+    printf("WTF?");
+    return -1;
+  }
 
-    return 0;
+  return 0;
 }
