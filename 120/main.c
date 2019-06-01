@@ -75,8 +75,9 @@ void* worker(void* arg)
 
     for(int i = 0; i < 3; i++)
     {
-        sleep(1);
+        pthread_mutex_lock(&task_done);
         do_job(act);
+        pthread_mutex_unlock(&task_done);
     }
     
     sleep(0);
