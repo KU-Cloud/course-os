@@ -25,6 +25,7 @@
 int main(int argc, char* argv[]){
     pid_t pid;
     int status;
+    status=1;
 
     printf("It breaks my heart to see my fellow zealots suffer on the battlefield.\n");
     printf("But what if we dragoons went to their rescue?\n");
@@ -34,11 +35,11 @@ int main(int argc, char* argv[]){
 
     pid = fork();
 
-    if(<?1/>){
+    if(pid>0){
         // HINT: The parent process should fall into this scope.
-        wait(<?3/>);
+        wait(&status);
         printf("Goon!\n");
-    } else if(<?2/>){
+    } else if(pid==0){
         // HINT: The child process should fall into this scope.
         printf("Ra! ");
     } else {
