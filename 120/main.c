@@ -83,6 +83,7 @@ void* worker(void* arg)
     for(int i = 0; i < NUM_PERSONAL_TASK; i++)
     {
         do_job(act);
+        sleep(1);
     }
     
     pthread_exit(NULL);
