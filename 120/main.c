@@ -62,6 +62,7 @@ int main(int argc, char* argv[])
 
 void do_job(char* actor){
     printf("[%s] working...\n", actor);
+    cnt_task--;
 }
 
 void go_home(char* actor){
@@ -73,7 +74,7 @@ void* worker(void* arg)
     char act[20];
     sprintf(act, "%s%d", "worker", (int)arg);
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < NUM_PERSONAL_TASK; i++)
     {
         sleep(1);
         do_job(act);
@@ -104,5 +105,9 @@ void* boss(void* arg)
     }
 
     go_home("like a boss");
+
+    while(cnt_task)
+	    ;
+    pthread_mutex_unlock(&task_done);
     pthread_exit(NULL);
 }
