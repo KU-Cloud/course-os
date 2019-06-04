@@ -3,7 +3,7 @@
  *
  * By walking through this example you’ll learn:
  * - How to wait detached thread using mutex.
- * 
+ *
  */
 
 #include <stdio.h>
@@ -61,6 +61,7 @@ int main(int argc, char* argv[])
 
 
 void do_job(char* actor){
+    cnt_task--;
     printf("[%s] working...\n", actor);
 }
 
@@ -78,8 +79,9 @@ void* worker(void* arg)
         sleep(1);
         do_job(act);
     }
-    
+
     sleep(0);
+    pthread_mutex_unlock(&task_done);
     pthread_exit(NULL);
 }
 
@@ -90,7 +92,7 @@ void* boss(void* arg)
 
     pthread_mutex_lock(&task_done);
 
-    for(int i = 0; i < NUM_WORKERS; i++) 
+    for(int i = 0; i < NUM_WORKERS; i++)
     {
         status = pthread_create(&tid, NULL, worker, i);
 
@@ -99,6 +101,8 @@ void* boss(void* arg)
             printf("WTF?");
             return -1;
         }
+
+        pthread_mutex_lock(&task_done);
 
         pthread_detach(tid);
     }
