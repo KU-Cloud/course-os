@@ -15,11 +15,7 @@ int main(int argc, char* argv[]){
 
     switch (pid)
     {
-        default:
-            // HINT: The parent process should fall into this scope.
-            printf("I'm your father.\n");
-            sleep(3);
-            break;
+
 
         case 0:
             sleep(1);
@@ -39,5 +35,11 @@ int main(int argc, char* argv[]){
             printf("WTF?");
             return -1;
             break;
+
+        default:
+            // HINT: The parent process should fall into this scope.
+            printf("I'm your father.\n");
+            sleep(3);
+            break;    
     }
 }
