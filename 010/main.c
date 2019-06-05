@@ -8,6 +8,7 @@
  * 
  */
 
+//zz
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -26,6 +27,10 @@ int main(int argc, char* argv[]){
 
     switch(pid = fork()){
         default:
+        //asdf
+        printf("asdf");
+
+        the_answer = 123;
             // HINT: The parent process should fall into this scope.
             the_answer = 42;
             arthur = 6 * 9;
