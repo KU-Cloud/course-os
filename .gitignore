@@ -1,3 +1,4 @@
 *.out
 _*
 .vscode
+*.m
