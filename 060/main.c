@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
     printf("Knock knock.\n");
 
     // HINT: The thread that runs `ninja` should be created.
-    int status = pthread_create(&tid, NULL, ninja, &from);
+    int status = pthread_<?1/>(<?2/>);
 
     if(status != 0){
         printf("WTF?");
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until `ninja` has finished.
-    pthread_join(tid, (void*)&from);
+    pthread_<?3/>(<?4/>);
 
     // HINT: The variable `from` should not be empty.
     printf(" - from %s\n", from);
