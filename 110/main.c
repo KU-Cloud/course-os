@@ -4,7 +4,7 @@
  * By walking through this example you’ll learn:
  * - How to use thread_detach().
  * - How to wait detached thread using shared variable.
- * 
+ *
  */
 
 #include <stdio.h>
@@ -40,11 +40,11 @@ int main(int argc, char* argv[])
     pthread_join(tid, NULL);
 
     // OBJECT: The main thread should not be exited until all `worker`s have finished.
-    // 
+    //
     // HINT: The `main` thread cannot wait for `worker` threads detached by `boos`.
     // HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
-    <?1/>
+    while(cnt_task);
 
     return 0;
 }
@@ -70,7 +70,7 @@ void* worker(void* arg)
         sleep(1);
         do_job(act);
     }
-    
+
     pthread_exit(NULL);
 }
 

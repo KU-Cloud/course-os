@@ -4,7 +4,7 @@
  * By walking through this example you’ll learn:
  * - How to use pthread_join().
  * - What happens when multiple threads try to reference the same memory block.
- * 
+ *
  */
 
 #define _GNU_SOURCE
@@ -23,7 +23,7 @@ static int cnt = 0;
 void* worker(void* arg){
     stick_this_thread_to_core(arg);
     int progress;
-    
+
     for(int i = 0; i < NUM_TASKS; i++){
         progress = cnt++;
     }
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]){
         // HINT: The thread that runs `worker` should be created.
         // HINT: The address of variable `i` should be passed when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_<?1/>(<?2/>);
+        status = pthread_create(&tids[i], NULL, worker, &i);
 
         if(status != 0){
             printf("WTF?");
@@ -49,8 +49,8 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
-    for(<?3/>){
-        pthread_<?4/>(<?5/>);
+    for(int i = 0; i < NUM_THREADS; i++){
+        pthread_join(tids[i], &progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
@@ -73,6 +73,6 @@ int stick_this_thread_to_core(int core_id) {
    CPU_ZERO(&cpuset);
    CPU_SET(core_id % num_cores, &cpuset);
 
-   pthread_t current_thread = pthread_self();    
+   pthread_t current_thread = pthread_self();
    return pthread_setaffinity_np(current_thread, sizeof(cpu_set_t), &cpuset);
 }
