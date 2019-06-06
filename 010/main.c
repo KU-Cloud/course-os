@@ -22,6 +22,7 @@ int main(int argc, char* argv[]){
     // Allocated in stack segment.
     int arthur = 0;
     
+    
     pid_t pid;
 
     switch(pid = fork()){
