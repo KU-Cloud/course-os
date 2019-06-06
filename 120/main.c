@@ -61,6 +61,7 @@ int main(int argc, char* argv[])
 
 
 void do_job(char* actor){
+    cnt_task--; // the place we needed to fix
     printf("[%s] working...\n", actor);
 }
 
@@ -104,5 +105,9 @@ void* boss(void* arg)
     }
 
     go_home("like a boss");
+
+    while(cnt_task > 0); //fixed
+    pthread_mutex_unlock(&task_done); // fixed
+
     pthread_exit(NULL);
 }

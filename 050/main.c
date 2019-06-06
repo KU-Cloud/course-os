@@ -31,14 +31,14 @@ int main(int argc, char* argv[]){
 
     printf("Duh! ");
     fflush(stdout);
+    
 
     pid = fork();
-
-    if(<?1/>){
+    if(pid>0){
         // HINT: The parent process should fall into this scope.
-        wait(<?3/>);
+        wait(&status);
         printf("Goon!\n");
-    } else if(<?2/>){
+    } else if(pid ==0){
         // HINT: The child process should fall into this scope.
         printf("Ra! ");
     } else {
