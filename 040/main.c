@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
 
     switch (pid)
     {
-        case 1 ... 10000:
+        default:
             // HINT: The parent process should fall into this scope.
             printf("I'm your father.\n");
             sleep(3);
