@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
 
 
 int stick_this_thread_to_core(int core_id) {
-   int num_cores = sysconf(_SC_NPROCESSORS_ONLN);
+   int num_cores = sysconf(_SC_NPROCESSORS_ONLN); //컴퓨터 코어 개수
 
    cpu_set_t cpuset;
    CPU_ZERO(&cpuset);
