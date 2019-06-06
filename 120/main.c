@@ -52,8 +52,12 @@ int main(int argc, char* argv[])
     }
 
     pthread_join(tid, NULL);
-
-    printf("Remaining task(s): %d\n", cnt_task);
+    while(cnt_task!=0) {
+        sleep(1);
+        printf("Remaining task(s): %d\n", cnt_task);
+    }
+    pthread_mutex_unlock(&task_done);
+    printf("THE LOCK IS UNLOCKED!\n");
 
     return 0;
 }
@@ -61,6 +65,7 @@ int main(int argc, char* argv[])
 
 
 void do_job(char* actor){
+    cnt_task--;
     printf("[%s] working...\n", actor);
 }
 
