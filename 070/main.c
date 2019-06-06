@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
-    for(<?3/>){
+    for(int i = 0; i < NUM_THREADS; i++){
         pthread_join(tids[i], (void *)&main_static);
     }
 
