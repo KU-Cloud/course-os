@@ -25,13 +25,13 @@ int main(int argc, char* argv[]){
     pid_t pid;
 
     switch(pid = fork()){
-        default:  
+        default:   
             // HINT: The parent process should fall into this scope.
             the_answer = 42;
             arthur = 6 * 9;
             sleep(SEVEN_AND_A_HALF_MILLION_YEARS);
             break;
-        case 0:  
+        case 0:   
             // HINT: The child process should fall into this scope.
             sleep(A_DAY * 2);
             break;
