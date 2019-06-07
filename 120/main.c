@@ -52,21 +52,21 @@ int main(int argc, char *argv[]) {
 
     pthread_join(tid, NULL);
 
-    while (1) {
-        pthread_mutex_lock(&task_done);
-        if (cnt_task <= 0) {
-            break;
-        }
-        pthread_mutex_unlock(&task_done);
-    }
+    pthread_mutex_lock(&task_done);
+    pthread_mutex_unlock(&task_done);
+
     printf("Remaining task(s): %d\n", cnt_task);
+
+    pthread_mutex_destroy(&task_done);
 
     return 0;
 }
 
 void do_job(char *actor) {
     printf("[%s] working...\n", actor);
-    cnt_task--;
+    if (--cnt_task <= 0) {
+        pthread_mutex_unlock(&task_done);
+    }
 }
 
 void go_home(char *actor) { printf("[%s] So long suckers!\n", actor); }
@@ -102,6 +102,5 @@ void *boss(void *arg) {
     }
 
     go_home("like a boss");
-    pthread_mutex_unlock(&task_done);
     pthread_exit(NULL);
 }
