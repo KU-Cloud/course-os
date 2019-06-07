@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
         // HINT: The address of variable `main_static` should be passed 
         //       when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_<?1/>(<?2/>);
+        status = pthread_create(&tids[i],NULL,worker,&main_static);
 
         if(status != 0){
             printf("WTF?");
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
     for(<?3/>){
-        pthread_<?4/>(<?5/>);
+        pthread_join(tids[i],NULL);
     }
 
     return 0;
