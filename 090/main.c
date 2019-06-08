@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
     int progress = 0;
 
     // The mutex `counter` should be initiated.
-    pthread_<?8/>(<?9/>, NULL);
+    pthread_mutex_init(&counter, NULL);
 
     for(int i = 0; i < NUM_THREADS; i++){
         // HINT: The thread that runs `worker` should be created.
