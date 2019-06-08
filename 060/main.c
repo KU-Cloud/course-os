@@ -32,12 +32,11 @@ void* ninja(void* arg){
 
 int main(int argc, char* argv[]){
     pthread_t tid;
-    char* from = "";
+    char* from = "hello";
     
     printf("Knock knock.\n");
-
     // HINT: The thread that runs `ninja` should be created.
-    int status = pthread_<?1/>(<?2/>);
+    int status = pthread_create(&tid, NULL, ninja, NULL);
 
     if(status != 0){
         printf("WTF?");
@@ -45,8 +44,8 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until `ninja` has finished.
-    pthread_<?3/>(<?4/>);
-
+    pthread_join(tid, (void*)&from);
+  	
     // HINT: The variable `from` should not be empty.
     printf(" - from %s\n", from);
 
