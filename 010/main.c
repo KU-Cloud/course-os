@@ -19,17 +19,19 @@ const int qwer = 0;
 // Allocated in data segment.
 static int the_answer = 0;
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
     // Allocated in stack segment.
     int arthur = 0;
     
     pid_t pid;
 
-    switch(pid = fork()){
+    switch(pid = fork())
+    {
         default:
             // HINT: The parent process should fall into this scope.
             the_answer = 42;
-            arthur = 6 * 9;
+            arthur = 6 * 7;
             sleep(SEVEN_AND_A_HALF_MILLION_YEARS);
             break;
         case 0:
