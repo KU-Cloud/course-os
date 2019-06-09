@@ -94,3 +94,4 @@ void* boss(void* arg)
     go_home("like a boss");
     pthread_exit(NULL);
 }
+

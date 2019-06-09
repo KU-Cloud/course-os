@@ -117,3 +117,4 @@ long timediff(clock_t t1, clock_t t2) {
     elapsed = ((double)t2 - t1) / CLOCKS_PER_SEC * 1000;
     return elapsed;
 }
+
