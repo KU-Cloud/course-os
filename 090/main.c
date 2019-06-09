@@ -26,17 +26,15 @@ void* worker(void* arg){
 
     for(int i = 0; i < NUM_TASKS; i++){
         // The mutex `counter` should be locked.
-        pthread_<?6/>(<?9/>);
+        pthread_mutex_lock(&counter);
 
         progress = cnt++;
 
         // The mutex `counter` should be released.
-        pthread_<?7/>(<?9/>);
+        pthread_mutex_unlock(&counter);
     }
     pthread_exit(progress);
 }
-
-
 
 int main(int argc, char* argv[]){
     pthread_t tids[NUM_THREADS];
@@ -44,13 +42,13 @@ int main(int argc, char* argv[]){
     int progress = 0;
 
     // The mutex `counter` should be initiated.
-    pthread_<?8/>(<?9/>, NULL);
+    pthread_mutex_init(&counter, NULL);
 
     for(int i = 0; i < NUM_THREADS; i++){
         // HINT: The thread that runs `worker` should be created.
         // HINT: The address of variable `i` should be passed when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_<?1/>(<?2/>);
+        status = pthread_create(&tids[i], NULL, worker, &i);
 
         if(status != 0){
             printf("WTF?");
@@ -59,8 +57,8 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
-    for(<?3/>){
-        pthread_<?4/>(<?5/>);
+    for(int i = 0; i < NUM_THREADS; i++){
+        pthread_join(tids[i], &progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
