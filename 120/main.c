@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
     }
 
     pthread_join(tid, NULL);
-
+    while(cnt_task);
     printf("Remaining task(s): %d\n", cnt_task);
 
     return 0;
@@ -61,11 +61,14 @@ int main(int argc, char* argv[])
 
 
 void do_job(char* actor){
+    cnt_task--;
+    pthread_mutex_unlock(&task_done);
+    pthread_mutex_lock(&task_done);
     printf("[%s] working...\n", actor);
 }
 
 void go_home(char* actor){
-    printf("[%s] So long suckers!\n", actor);
+    printf("[%s] So long suckers!\n", actor );
 }
 
 void* worker(void* arg)
@@ -78,8 +81,9 @@ void* worker(void* arg)
         sleep(1);
         do_job(act);
     }
-    
+
     sleep(0);
+
     pthread_exit(NULL);
 }
 
