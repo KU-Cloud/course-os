@@ -1,10 +1,3 @@
-/**
- * Do Your Job and I'll Do Mine 2.
- *
- * By walking through this example you’ll learn:
- * - How to wait detached thread using mutex.
- * 
- */
 
 #include <stdio.h>
 #include <stdatomic.h>
@@ -53,7 +46,9 @@ int main(int argc, char* argv[])
 
     pthread_join(tid, NULL);
 
+    pthread_mutex_lock(&task_done);
     printf("Remaining task(s): %d\n", cnt_task);
+    pthread_mutex_unlock(&task_done);
 
     return 0;
 }
@@ -80,6 +75,8 @@ void* worker(void* arg)
         do_job(act);
     }
     
+    if(cnt_task == 0)
+	pthread_mutex_unlock(&task_done);
     sleep(0);
 
     pthread_exit(NULL);
