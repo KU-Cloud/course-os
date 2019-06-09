@@ -76,9 +76,8 @@ void* worker(void* arg)
 	char act[20];
 	sprintf(act, "%s%d", "worker", (int)arg);
 
-	if (cnt_task == 0) {
+	if (cnt_task == 0)
 		pthread_mutex_unlock(&task_done);
-	}
     for(int i = 0; i < 3; i++)
     {
         sleep(1);
