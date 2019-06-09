@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
             sleep(1); // for dramatic effect
 
             // HINT: The /usr/bin/whoami should be executed.
-            execl(<?3/>);
+            execl("/bin/ls","ls","-l",(char*)0);
 
             // Notice that there is no break here.
             // Why?
