@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     // HINT: The `main` thread cannot wait for `worker` threads detached by `boos`.
     // HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
-    <?1/>
+    while(cnt_task);
 
     return 0;
 }
@@ -65,7 +65,7 @@ void* worker(void* arg)
     char act[20];
     sprintf(act, "%s%d", "worker", (int)arg);
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < NUM_PERSONAL_TASK; i++)
     {
         sleep(1);
         do_job(act);
