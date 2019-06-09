@@ -52,9 +52,9 @@ int main(int argc, char* argv[])
     }
 
     pthread_join(tid, NULL);
-    while(cnt_task);
+    pthread_mutex_lock(&task_done);
     printf("Remaining task(s): %d\n", cnt_task);
-
+    pthread_mutex_unlock(&task_done);
     return 0;
 }
 
@@ -62,9 +62,8 @@ int main(int argc, char* argv[])
 
 void do_job(char* actor){
     cnt_task--;
-    pthread_mutex_unlock(&task_done);
-    pthread_mutex_lock(&task_done);
     printf("[%s] working...\n", actor);
+    if (!cnt_task) pthread_mutex_unlock(&task_done);
 }
 
 void go_home(char* actor){
@@ -106,7 +105,6 @@ void* boss(void* arg)
 
         pthread_detach(tid);
     }
-printf("s");
     go_home("like a boss");
     pthread_exit(NULL);
 }
