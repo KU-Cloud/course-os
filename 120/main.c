@@ -39,6 +39,7 @@ void* boss(void* arg);
 int main(int argc, char* argv[])
 {
     pthread_t tid;
+    
     int status;
 
     pthread_mutex_init(&task_done, NULL);
@@ -53,7 +54,7 @@ int main(int argc, char* argv[])
 
     pthread_join(tid, NULL);
 
-    printf("Remaining task(s): %d\n", cnt_task);
+    printf("Remaining task(s): %d\n", cnt_task);//here
 
     return 0;
 }
