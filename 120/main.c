@@ -62,6 +62,7 @@ int main(int argc, char* argv[])
 
 void do_job(char* actor){
     printf("[%s] working...\n", actor);
+    cnt_task--;
 }
 
 void go_home(char* actor){
@@ -80,6 +81,7 @@ void* worker(void* arg)
     }
     
     sleep(0);
+
     pthread_exit(NULL);
 }
 
