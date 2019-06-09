@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
             break;
     }
 
-    printf("My pid is %ld (%s)\n", (long)getpid(), pid == 0 ? "child" : "parent");
+    printf("My pid2 is %ld (%s)\n", (long)getpid(), pid == 0 ? "child" : "parent");
     printf("The answer to the ultimate question of life the universe and everything is %d.\n", the_answer);
     printf("But Arthur replied that it was %d.\n\n", arthur);
 
