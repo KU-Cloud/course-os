@@ -1,4 +1,4 @@
-/**
+/*
  * Basic fork() Usage 1.
  *
  * By walking through this example you’ll learn:
