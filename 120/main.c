@@ -106,7 +106,7 @@ void* boss(void* arg)
 
         pthread_detach(tid);
     }
-
+printf("s");
     go_home("like a boss");
     pthread_exit(NULL);
 }
