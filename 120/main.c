@@ -53,14 +53,19 @@ int main(int argc, char* argv[])
 
     pthread_join(tid, NULL);
 
+    pthread_mutex_lock(&task_done);
     printf("Remaining task(s): %d\n", cnt_task);
+    pthread_mutex_unlock(&task_done);
 
     return 0;
 }
 
 
 
-void do_job(char* actor){
+void do_job(char* actor)
+{
+    if(--cnt_task == 0)
+        pthread_mutex_unlock(&task_done);
     printf("[%s] working...\n", actor);
 }
 
