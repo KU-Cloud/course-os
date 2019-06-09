@@ -74,7 +74,7 @@ void go_home(char* actor){
 void* worker(void* arg)
 {
     char act[20];
-    sprintf(act, "%s%d", "worker", (int)arg);
+    sprintf(act, "%s%d", "worker", (int)cdarg);
 
     for(int i = 0; i < 3; i++)
     {
@@ -107,7 +107,7 @@ void* boss(void* arg)
     }
 
     go_home("like a boss");
-    while(task_done>0);
+    while(task_done);
     pthread_mutex_unlock(&task_done);
     pthread_exit(NULL);
 }

@@ -40,7 +40,7 @@ int main(int argc, char* argv[]){
         // HINT: The thread that runs `worker` should be created.
         // HINT: The address of variable `i` should be passed when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_create(tid+i,NULL,worker,&i);
+        status = pthread_create(tids+i,NULL,worker,&i);
 
         if(status != 0){
             printf("WTF?");
@@ -49,8 +49,8 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
-    for(<int i=0; i<NUM_THREADS;i++){
-        pthread_join(tid[i],&progress);
+    for(int i=0; i<NUM_THREADS;i++){
+        pthread_join(tids[i],&progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
