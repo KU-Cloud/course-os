@@ -18,12 +18,13 @@ const int A_DAY = 1;
 // Allocated in data segment.
 static int the_answer = 0;
 
+
 int main(int argc, char* argv[]){
     // Allocated in stack segment.
     int arthur = 0;
     
     pid_t pid;
-
+    //hi
     switch(pid = fork()){
         default:
             // HINT: The parent process should fall into this scope.
