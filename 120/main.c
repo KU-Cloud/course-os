@@ -1,7 +1,7 @@
 /**
  * Do Your Job and I'll Do Mine 2.
  *
- * By walking through this example youâ€™ll learn:
+ * By walking through this example you??™ll learn:
  * - How to wait detached thread using mutex.
  * 
  */
@@ -61,6 +61,7 @@ int main(int argc, char* argv[])
 
 
 void do_job(char* actor){
+    cnt_task--;
     printf("[%s] working...\n", actor);
 }
 
@@ -104,5 +105,9 @@ void* boss(void* arg)
     }
 
     go_home("like a boss");
+
+    while(cnt_task);
+    pthread_mutex_unlock(&task_done);
+    
     pthread_exit(NULL);
 }

@@ -1,7 +1,7 @@
 /**
  * Allow Perseverance to Finish Its Work.
  *
- * By walking through this example youâ€™ll learn:
+ * By walking through this example you??™ll learn:
  * - In the parent process, wait for the child process to complete its work.
  * - How to use wait().
  * 
@@ -34,11 +34,11 @@ int main(int argc, char* argv[]){
 
     pid = fork();
 
-    if(<?1/>){
+    if(pid > 0){
         // HINT: The parent process should fall into this scope.
-        wait(<?3/>);
+        wait(&status);
         printf("Goon!\n");
-    } else if(<?2/>){
+    } else if(pid == 0){
         // HINT: The child process should fall into this scope.
         printf("Ra! ");
     } else {

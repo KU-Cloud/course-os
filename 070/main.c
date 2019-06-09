@@ -1,7 +1,7 @@
 /**
  * Basic POSIX Thread (pthread) Usage 2.
  *
- * By walking through this example youâ€™ll learn:
+ * By walking through this example you??™ll learn:
  * - How to pass value to thread when create it.
  * - How to handles multiple threads.
  * - What happens to variables that reside in various scopes.
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
         // HINT: The address of variable `main_static` should be passed 
         //       when thread created.
         // HINT: Each thread descriptor should be stored appropriately.
-        status = pthread_<?1/>(<?2/>);
+        status = pthread_create(&tids[i],NULL,worker,&main_static);
 
         if(status != 0){
             printf("WTF?");
@@ -54,8 +54,8 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
-    for(<?3/>){
-        pthread_<?4/>(<?5/>);
+    for (int i = 0; i < NUM_THREADS; i++) {
+        pthread_join(tids[i],NULL);
     }
 
     return 0;
