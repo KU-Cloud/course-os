@@ -25,9 +25,7 @@ int main(int argc, char* argv[]){
             sleep(1);
             // HINT: The child process should fall into this scope.
             printf("I'm sorry, but I'm not Luke. I'm...");
-            // fflush(FILE *stream) flushed the output buffer of a stream
-            // 즉, 다음 데이터를 입력받기 전, 버퍼에 남아 있는 데이터를 지우기 위해 사용된다.
-            // returns zero value on success, If an error occurs, EOF is returned
+
             fflush(stdout);
 
             sleep(1); // for dramatic effect
