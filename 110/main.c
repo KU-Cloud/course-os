@@ -41,10 +41,10 @@ int main(int argc, char* argv[])
 
     // OBJECT: The main thread should not be exited until all `worker`s have finished.
     // 
-    // HINT: The `main` thread cannot wait for `worker` threads detached by `boos`.
+    // HINT: The `main` thread cannot wait for `worker` threads detached by `boss`.
     // HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
-    <?1/>
+	while (cnt_task != 0) sleep(1);
 
     return 0;
 }

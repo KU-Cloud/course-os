@@ -15,13 +15,13 @@ int main(int argc, char* argv[]){
 
     switch (pid)
     {
-        <?1/>:
+	default:
             // HINT: The parent process should fall into this scope.
             printf("I'm your father.\n");
             sleep(3);
             break;
 
-        <?1/>:
+	case 0:
             sleep(1);
             // HINT: The child process should fall into this scope.
             printf("I'm sorry, but I'm not Luke. I'm...");
@@ -30,10 +30,10 @@ int main(int argc, char* argv[]){
             sleep(1); // for dramatic effect
 
             // HINT: The /usr/bin/whoami should be executed.
-            execl(<?3/>);
+            execl("/usr/bin/whoami", "whoami", NULL);
 
             // Notice that there is no break here.
-            // Why?
+            // Why? =  execl 함수는 원래 함수를 종료하고 지정한 프로그램을 대신 실행하기 때문에 break의 역할을 수행한다.
 
         case -1:
             printf("WTF?");

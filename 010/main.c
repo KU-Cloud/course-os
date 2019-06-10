@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
     pid_t pid;
 
     switch(pid = fork()){
-        default:
+	default:
             // HINT: The parent process should fall into this scope.
             the_answer = 42;
             arthur = 6 * 9;

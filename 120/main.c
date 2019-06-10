@@ -53,6 +53,7 @@ int main(int argc, char* argv[])
 
     pthread_join(tid, NULL);
 
+	pthread_mutex_lock(&task_done);
     printf("Remaining task(s): %d\n", cnt_task);
 
     return 0;
@@ -102,6 +103,11 @@ void* boss(void* arg)
 
         pthread_detach(tid);
     }
+
+	if (cnt_task)
+		pthread_mutex_unlock(&task_done);
+	else
+		printf("WTF?");
 
     go_home("like a boss");
     pthread_exit(NULL);
