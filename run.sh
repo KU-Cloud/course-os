@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 command -v gcc >/dev/null 2>&1 || { echo >&2 "Require \`gcc\` but it's not installed. Aborting."; exit 1; }
-
 trg=$1
 
 if [ ! $trg ]; then
