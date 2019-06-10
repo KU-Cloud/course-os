@@ -4,12 +4,6 @@
  * By walking through this example you’ll learn:
  * - How to use thread_detach().
  * - How to wait detached thread using shared variable.
- * 
- * pthread_detach() 함수는, 스레드에 할당된 리소스가 종료 시 회수가능하다는 것을
- * 시스템에 알리기 위해 사용된다. 이 함수는 다른 스레드가 종료상태를 필요로 하지 않을 때, 사용해야만 한다.
- * 
- * 스레드가 detach되지 않고 종료되면, 스레드의 작업이 해방되어, thread_join() 또는 thread_detach()에 의해
- * 스레드가 파기될 때 까지, 힙과 OS 레벨의 오브젝트도 포함한 모든 리소스가 남아버리게 된다.
  */
 
 #include <stdio.h>
@@ -34,7 +28,6 @@ int main(int argc, char* argv[])
     pthread_t tid;
     int status;
 
-    // 스레드 생성, NULL을 boss 함수에 넘겨줌
     status = pthread_create(&tid, NULL, boss, NULL);
 
     if (status != 0)
@@ -69,7 +62,7 @@ void go_home(char* actor){
 void* worker(void* arg)
 {
     char act[20];
-    // sprintf(버퍼 변수, 포맷, 가변 파라미터)
+
     sprintf(act, "%s%d", "worker", (int)arg);
 
     for(int i = 0; i < 3; i++)

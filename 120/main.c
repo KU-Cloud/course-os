@@ -51,7 +51,6 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    // Wait for threads to finish
     pthread_join(tid, NULL);
 
     printf("Remaining task(s): %d\n", cnt_task);
@@ -90,7 +89,6 @@ void* boss(void* arg)
     pthread_t tid;
     int status;
     
-    // Start Critical section
     pthread_mutex_lock(&task_done);
 
     for(int i = 0; i < NUM_WORKERS; i++) 
