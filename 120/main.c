@@ -75,7 +75,7 @@ void go_home(char* actor){
 void* worker(void* arg)
 {
     char act[20];
-    sprintf(act, "%s%d", "worker", (int)cdarg);
+    sprintf(act, "%s%d", "worker", (int)arg);
 
     for(int i = 0; i < 3; i++)
     {
