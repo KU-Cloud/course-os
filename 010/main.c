@@ -15,6 +15,7 @@
 const int SEVEN_AND_A_HALF_MILLION_YEARS = 3;
 const int A_DAY = 1;
 
+//testtesttest
 // Allocated in data segment.
 static int the_answer = 0;
 
