@@ -3,7 +3,6 @@
  *
  * By walking through this example you’ll learn:
  * - The presence of overhead due to locks.
- * 
  */
 
 #define _GNU_SOURCE

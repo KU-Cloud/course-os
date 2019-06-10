@@ -4,7 +4,6 @@
  * By walking through this example you’ll learn:
  * - How to use pthread_join().
  * - What happens when multiple threads try to reference the same memory block.
- * 
  */
 
 #define _GNU_SOURCE

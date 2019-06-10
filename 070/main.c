@@ -5,7 +5,6 @@
  * - How to pass value to thread when create it.
  * - How to handles multiple threads.
  * - What happens to variables that reside in various scopes.
- * 
  */
 
 #include <stdio.h>

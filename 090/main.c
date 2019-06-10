@@ -3,7 +3,6 @@
  *
  * By walking through this example you’ll learn:
  * - How to preserve consistency.
- * 
  */
 
 #define _GNU_SOURCE

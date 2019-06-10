@@ -5,7 +5,6 @@
  * - How to use fork().
  * - How to distinguish parent and child process.
  * - What happens to variables that reside in various scopes.
- * 
  */
 
 #include <stdio.h>
