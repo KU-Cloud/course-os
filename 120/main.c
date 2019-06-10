@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
         printf("WTF?");
         return -1;
     }
+    while(cnt_task);
+    pthreads_mutex_unlock(&task_done);
 
     pthread_join(tid, NULL);
 
@@ -62,10 +64,13 @@ int main(int argc, char* argv[])
 
 void do_job(char* actor){
     printf("[%s] working...\n", actor);
+    cnt_task--;
 }
 
 void go_home(char* actor){
+    pthread_mutex_lock(&task_done);
     printf("[%s] So long suckers!\n", actor);
+    pthread_mutex_unlock(&task_done);
 }
 
 void* worker(void* arg)
