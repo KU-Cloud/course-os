@@ -75,11 +75,12 @@ void* worker(void* arg)
 
     for(int i = 0; i < 3; i++)
     {
-        sleep(1);
+        //sleep(1);
         do_job(act);
+        cnt_task--;
     }
     
-    sleep(0);
+    //sleep(0);
     pthread_exit(NULL);
 }
 
@@ -92,6 +93,7 @@ void* boss(void* arg)
 
     for(int i = 0; i < NUM_WORKERS; i++) 
     {
+        pthread_mutex_lock(&task_done);
         status = pthread_create(&tid, NULL, worker, i);
 
         if (status != 0)
@@ -100,7 +102,9 @@ void* boss(void* arg)
             return -1;
         }
 
+        pthread_join(tid);
         pthread_detach(tid);
+        pthread_mutex_unlock(&task_done);
     }
 
     go_home("like a boss");
