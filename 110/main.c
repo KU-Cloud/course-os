@@ -87,7 +87,7 @@ void* boss(void* arg)
             printf("WTF?");
             return -1;
         }
-
+        
         pthread_detach(tid);
     }
 
