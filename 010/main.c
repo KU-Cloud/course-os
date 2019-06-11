@@ -1,11 +1,11 @@
-/* test*
+/**
  * Basic fork() Usage 1.
  *
  * By walking through this example you’ll learn:
  * - How to use fork().
  * - How to distinguish parent and child process.
  * - What happens to variables that reside in various scopes.
- * 
+ * test 
  */
 
 #include <stdio.h>
