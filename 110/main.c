@@ -44,8 +44,8 @@ int main(int argc, char* argv[])
     // HINT: The `main` thread cannot wait for `worker` threads detached by `boos`.
     // HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
-    <?1/>
-
+    while(cnt_task > 0)
+        ;
     return 0;
 }
 
