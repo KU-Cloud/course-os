@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
     }
 
     // HINT: The main thread should not be exited until `ninja` has finished.
-    pthread_join(tid, (void*)&from);
+    pthread_join(tid, (void**)&from);
     
     // HINT: The variable `from` should not be empty.
     printf(" - from %s\n", from);
