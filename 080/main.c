@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 
     // HINT: The main thread should not be exited until all `worker`s have finished.
     for(int i = 0; i < NUM_THREADS; i++){
-        pthread_join(tids[i], (void**)&progress);
+        pthread_join(tids[i], &progress);
         // HINT: The variable `progress` should not be 0.
         printf("\r%d ", progress);
 
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]){
         usleep(10*1000); // 10ms
     }
 
-    printf("\nexpectd: %d\n", NUM_THREADS * NUM_TASKS);
+    printf("\nexpected: %d\n", NUM_THREADS * NUM_TASKS);
     printf("result: %d\n", cnt);
 
     return 0;
