@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     // HINT: Is there any information about remaining tasks that can be
     //       referenced in the `main` thread?
     while(cnt_task)
-
+    int a;
     return 0;
 }
 
