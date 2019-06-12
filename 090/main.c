@@ -31,7 +31,7 @@ void* worker(void* arg){
         progress = cnt++;
 
         // The mutex `counter` should be released.
-        pthread_mutex_lock(&counter);
+        pthread_mutex_unlock(&counter);
     }
     pthread_exit(progress);
 }
