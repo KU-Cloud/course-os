@@ -15,13 +15,19 @@ int main(int argc, char* argv[]){
 
     switch (pid)
     {
-        <?1/>:
+        case 1: // Switch cannot detect range of values. This problem is wrong.
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        // ...
+        
             // HINT: The parent process should fall into this scope.
             printf("I'm your father.\n");
             sleep(3);
             break;
 
-        <?1/>:
+        case 0:
             sleep(1);
             // HINT: The child process should fall into this scope.
             printf("I'm sorry, but I'm not Luke. I'm...");
